@@ -10,6 +10,5 @@ Template.sprite.helpers({
       a.style.width = this.animation.srcWidth
       a.style.height = this.animation.srcHeight
     })
-    $(`#Sprite-${this.id}`).width(256*this.scale.x).height(512*this.scale.y)
   }
 })

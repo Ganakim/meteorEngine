@@ -36,11 +36,39 @@ Template.body.onRendered(()=>{
       engine.ui.show('topBar', ['username'])
       engine.ui.show('stats')
       console.log(engine)
+
+      // Creating a gameobject
+      engine.player = engine.GameObject({
+        position: new Vector(0, 50),
+        scale: new Vector(50, 50),
+        animations: {
+          idle: new EngineAnimation('solidColor.png', new Vector(), new Vector(1, 1))
+        },
+        init(){
+          this.speed = 10
+        },
+        update(){
+          // Do sprite specific things here
+          if(engine.getKey(['w', 'ArrowUp'])){
+            this.y -= this.speed
+          }
+          if(engine.getKey(['s', 'ArrowDown'])){
+            this.y += this.speed
+          }
+        }
+      })
+      console.log(this.player)
     },
     update(){
-      
+      // Do scene update things here
+      if(engine.getKey(['a', 'ArrowLeft'])){
+        this.player.x -= this.player.speed
+      }
+      if(engine.getKey(['d', 'ArrowRight'])){
+        this.player.x += this.player.speed
+      }
     },
-    events: {
+    events: { // You can hook directly into DOM events here
       'keyup'(e){
         console.log(e.key)
       }
