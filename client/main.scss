@@ -1,0 +1,107 @@
+// Variables
+$directions: (
+  bw: border-width,
+  mxw: max-width,
+  mxh: max-height,
+  mw: min-width,
+  mh: min-height,
+  t: top,
+  l: left,
+  r: right,
+  b: bottom,
+);
+// Bootstrap overrides
+$enable-responsive-font-sizes: true;
+$sizes: (
+  0: 0,
+  5: 5%,
+  10: 10%,
+  15: 15%,
+  20: 20%,
+  25: 25%,
+  30: 30%,
+  35: 35%,
+  40: 40%,
+  45: 45%,
+  50: 50%,
+  55: 55%,
+  60: 60%,
+  65: 65%,
+  70: 70%,
+  75: 75%,
+  80: 80%,
+  85: 85%,
+  90: 90%,
+  95: 95%,
+  100: 100%,
+  auto: auto,
+);
+$theme-colors: (
+  "modal": rgba(100, 100, 100, 0.2),
+);
+@each $abbrev, $prop in $directions {
+  @each $size, $length in $sizes {
+    .#{$abbrev}-#{$size} {
+      #{$prop}: $length !important;
+    }
+  }
+}
+
+[class*="overflow"]::-webkit-scrollbar{
+  display: none;
+}
+
+[class*="overflow"]{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@import "{}/node_modules/bootstrap/scss/bootstrap.scss";
+// Components
+@import '{}/imports/components/siteNav/siteNav.scss';
+@import '{}/imports/components/siteModal/siteModal.scss';
+@import '{}/imports/components/sprite/sprite.scss';
+// pages
+@import '{}/imports/pages/game/game.scss';
+@import '{}/imports/pages/wiki/wiki.scss';
+@import '{}/imports/pages/test/test.scss';
+@import '{}/imports/pages/about/about.scss';
+
+body{
+  width: 100vw;
+  height: 100vh;
+}
+
+.justify-content-even>*{
+  flex: 1;
+}
+
+.c-pointer{
+  cursor: pointer;
+}
+
+.btn-link{
+  @extend .text-primary;
+}
+
+.btn-link:hover{
+  text-decoration: underline;
+}
+
+.scroll-y{
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.scroll-x{
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+[dropdown="false"]{
+  height: 0!important;
+  width: 0!important;
+  padding: 0!important;
+  margin: 0!important;
+  overflow: hidden!important;
+}

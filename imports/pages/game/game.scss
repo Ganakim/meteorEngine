@@ -1,0 +1,37 @@
+#Game{
+  background-color: black;
+  #UI{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    pointer-events: none;
+    .interactible{
+      pointer-events: all;
+    }
+    :not(.interactible){
+      pointer-events: none;
+    }
+    #MaximizeGame{
+      width: 5em;
+      height: 4em;
+      z-index: 2;
+      overflow: hidden;
+      div{
+        background-color: rgba(25, 25, 25, .8);
+        border-radius: 0 0 0 30px;
+        width: 0;
+        height: 0;
+        &.out{
+          @extend .pt-2;
+          @extend .pr-3;
+          @extend .pb-3;
+          @extend .pl-4;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}

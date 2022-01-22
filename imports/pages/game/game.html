@@ -1,0 +1,46 @@
+<template name="game">
+  <div id="Game" class="d-flex justify-content-center align-items-center position-relative w-100">
+    <div id="GameArea"></div>
+    <div id="UI" class="d-flex justify-content-center align-items-center">
+      {{>uiPane item=ui}}
+      <div id="MaximizeGame" class="d-flex justify-content-end align-items-start position-absolute t-0 r-0 text-light interactible">
+        <div class="c-pointer interactible">
+          <i class="fal fa-expand-wide fa-2x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="uiPane">
+  {{#each split item "entries"}}
+    {{#if value.visible}}
+      {{>Template.dynamic template=key data=value.data}}
+      {{#if value.children}}
+        {{>uiPane item=value.children}}
+      {{/if}}
+    {{/if}}
+  {{/each}}
+</template>
+
+<template name="topBar">
+  <div class="d-flex justify-content-even bg-dark text-light w-100 position-absolute t-0 p-2 border-top">
+    <div class="icons">
+
+    </div>
+    {{#if logic "username" "in" this}}
+    <div class="text-center">
+      {{currentUser.username}}
+    </div>
+    {{/if}}
+    <div class="clock text-right">
+      {{clock}}
+    </div>
+  </div>
+</template>
+
+<template name="stats">
+  <div class="position-absolute r-0 b-0 m-2 text-light">
+    {{get "fps"}}
+  </div>
+</template>

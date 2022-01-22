@@ -1,0 +1,19 @@
+<template name="siteNav">
+  <div id="SiteNav" class="position-absolute t-0 d-flex justify-content-between align-items-center w-100 bg-dark text-light p-2">
+    <div class="navLinks">
+      {{#each navLinks}}
+        <div class="btn btn-{{#if logic link '==' (get 'page.path')}}info{{else}}dark{{/if}} mr-2">
+          {{text}}
+        </div>
+      {{/each}}
+    </div>
+    {{#if currentUser}}
+      <div class="d-flex align-items-center">
+        {{currentUser.username}}
+        <div id="Logout" class="btn btn-secondary ml-3">Log Out</div>
+      </div>
+    {{else}}
+      <div id="Login" class="btn btn-secondary">Log In</div>
+    {{/if}}
+  </div>
+</template>

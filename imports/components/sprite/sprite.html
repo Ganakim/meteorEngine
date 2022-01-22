@@ -1,0 +1,20 @@
+<template name="sprite">
+  {{#with sprite}}
+    <div id="Sprite-{{id}}">
+      {{#each animation.layers}}
+        {{#with getFrame}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="{{logic width '*' ../../scale.x}}" height="{{logic height '*' ../../scale.y}}" viewBox="{{left}} {{top}} {{width}} {{height}}" version="1.1" class="position-absolute">
+            <defs>
+              <filter id="{{../../id}}-Layer-{{@index}}-mask">
+                <feFlood flood-color="{{logic ../color '||' '#ffffff'}}" result="flood" />
+                <feComposite in="SourceGraphic" in2="flood" operator="arithmetic" k1="1" k2="0" k3="0" k4="0" />
+              </filter>
+            </defs>
+            <image width="0" height="0" xlink:href="{{../../animation.tileset}}" filter="url(#{{../../id}}-Layer-{{@index}}-mask)" />
+          </svg>
+        {{/with}}
+      {{/each}}
+    </div>
+    {{fixSize}}
+  {{/with}}
+</template>

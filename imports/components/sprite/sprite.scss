@@ -1,0 +1,11 @@
+[id*="Sprite-"]{
+  position: absolute;
+  pointer-events: none;
+  &>.mask{
+    position: relative;
+    overflow: hidden;
+    &>img{
+      position: absolute;
+    }
+  }
+}

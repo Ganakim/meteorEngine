@@ -1,0 +1,31 @@
+<template name="siteModal">
+  {{#with modalInfo}}
+    <div id="SiteModalShroud" class="d-flex w-100 h-100 justify-content-center align-items-center position-absolute">
+      <div id="SiteModal" class="card shadow">
+        {{#if title}}
+          <div class="card-header">
+            {{title}}
+          </div>
+        {{/if}}
+        {{#if logic message "||" inputs}}
+          <div class="card-body d-flex flex-column">
+            {{message}}
+            {{#each inputs}}
+              <label for="SiteModalInput-{{name}}">{{label}}</label>
+              <input type="{{type}}" id="SiteModalInput-{{name}}" class="mb-2 interactible" value="{{value}}">
+              {{#if error}}<small class="text-danger">{{error}}</small>{{/if}}
+            {{/each}}
+            {{#if error}}<small class="text-danger">{{error}}</small>{{fadeErrors}}{{/if}}
+          </div>
+        {{/if}}
+        {{#if actions}}
+          <div class="card-footer d-flex justify-content-end">
+            {{#each actions}}
+              <div id="SiteModalAction-{{@index}}" class="btn btn-{{color}} interactible">{{text}}</div>
+            {{/each}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  {{/with}}
+</template>
