@@ -6,14 +6,18 @@
 </head>
 
 <body class="d-flex flex-column justify-content-center align-items-start fullscreen">
-  {{#if get "userSubLoaded"}}
-    {{>siteNav}}
-    {{>Template.dynamic template=(get "page.path")}}
-    {{#if showMenu}}
-      {{>menu}}
-    {{/if}}
-    {{#if modalInfo}}
-      {{>siteModal}}
-    {{/if}}
+  <div id="Game" class="d-flex justify-content-center align-items-center position-relative">
+    <div id="GameArea"></div>
+    <div id="UI" class="d-flex justify-content-center align-items-center">
+      {{>uiPane item=ui}}
+      <div id="MaximizeGame" class="d-flex justify-content-end align-items-start position-absolute t-0 r-0 text-light interactible">
+        <div class="c-pointer interactible">
+          <i class="fal fa-expand-wide fa-2x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{#if modalInfo}}
+    {{>siteModal}}
   {{/if}}
 </body>

@@ -58,14 +58,9 @@ $theme-colors: (
 
 @import "{}/node_modules/bootstrap/scss/bootstrap.scss";
 // Components
-@import '{}/imports/components/siteNav/siteNav.scss';
 @import '{}/imports/components/siteModal/siteModal.scss';
 @import '{}/imports/components/sprite/sprite.scss';
 // pages
-@import '{}/imports/pages/game/game.scss';
-@import '{}/imports/pages/wiki/wiki.scss';
-@import '{}/imports/pages/test/test.scss';
-@import '{}/imports/pages/about/about.scss';
 
 body{
   width: 100vw;
@@ -104,4 +99,44 @@ body{
   padding: 0!important;
   margin: 0!important;
   overflow: hidden!important;
+}
+
+#Game{
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  #UI{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    pointer-events: none;
+    .interactible{
+      pointer-events: all;
+    }
+    :not(.interactible){
+      pointer-events: none;
+    }
+    #MaximizeGame{
+      width: 5em;
+      height: 4em;
+      z-index: 2;
+      overflow: hidden;
+      div{
+        background-color: rgba(25, 25, 25, .8);
+        border-radius: 0 0 0 30px;
+        width: 0;
+        height: 0;
+        &.out{
+          @extend .pt-2;
+          @extend .pr-3;
+          @extend .pb-3;
+          @extend .pl-4;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
 }
