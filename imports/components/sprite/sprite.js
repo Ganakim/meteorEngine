@@ -6,9 +6,11 @@ Template.sprite.helpers({
   },
   fixSize(){
     this.animation.loaded.depend()
-    $(`#Sprite-${this.id} image`).each((i, a)=>{
-      a.style.width = this.animation.srcWidth
-      a.style.height = this.animation.srcHeight
-    })
+    if(this.animation.srcWidth && this.animation.srcHeight){
+      $(`#Sprite-${this.id} image`).each((i, a)=>{
+        a.style.width = this.animation.srcWidth
+        a.style.height = this.animation.srcHeight
+      })
+    }
   }
 })

@@ -10,15 +10,7 @@
 </template>
 
 <template name="topBar">
-  <div class="d-flex justify-content-even bg-dark text-light w-100 position-absolute t-0 p-2 border-top">
-    <div class="icons">
-
-    </div>
-    {{#if logic "username" "in" this}}
-    <div class="text-center">
-      {{currentUser.username}}
-    </div>
-    {{/if}}
+  <div class="d-flex justify-content-end bg-dark text-light w-100 position-absolute t-0 p-2">
     <div class="clock text-right">
       {{get "serverTime"}}
     </div>
